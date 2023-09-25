@@ -1,19 +1,50 @@
 /******/ var __webpack_modules__ = ({
 
+/***/ 487:
+/***/ ((module) => {
+
+module.exports = eval("require")("@actions/core");
+
+
+/***/ }),
+
+/***/ 574:
+/***/ ((module) => {
+
+module.exports = eval("require")("@actions/exec");
+
+
+/***/ }),
+
+/***/ 855:
+/***/ ((module) => {
+
+module.exports = eval("require")("@actions/github");
+
+
+/***/ }),
+
 /***/ 269:
 /***/ ((__webpack_module__, __unused_webpack___webpack_exports__, __nccwpck_require__) => {
 
 __nccwpck_require__.a(__webpack_module__, async (__webpack_handle_async_dependencies__, __webpack_async_result__) => { try {
-const core = require("@actions/core")
-const github = require("@actions/github")
-const exec = require("@actions/exec")
+/* harmony import */ var _actions_core__WEBPACK_IMPORTED_MODULE_0__ = __nccwpck_require__(487);
+/* harmony import */ var _actions_github__WEBPACK_IMPORTED_MODULE_1__ = __nccwpck_require__(855);
+/* harmony import */ var _actions_exec__WEBPACK_IMPORTED_MODULE_2__ = __nccwpck_require__(574);
+// const core = require("@actions/core")
+// const github = require("@actions/github")
+// const exec = require("@actions/exec")
+
+
+
+
 
 try {
     // 'who-to-greet' input defined in action metadata file
-    const nameToGreet = core.getInput('who-to-greet');
+    const nameToGreet = _actions_core__WEBPACK_IMPORTED_MODULE_0__.getInput('who-to-greet');
     console.log(`Hello ${nameToGreet}`);
     const time = (new Date()).toTimeString();
-    core.setOutput("time", time);
+    _actions_core__WEBPACK_IMPORTED_MODULE_0__.setOutput("time", time);
     // exec dir command
     let dirOutput = '';
     let dirError = '';
@@ -27,14 +58,14 @@ try {
             }
         }
     };
-    await exec.exec('dir', [], options);
+    await _actions_exec__WEBPACK_IMPORTED_MODULE_2__.exec('dir', [], options);
     console.log(dirOutput);
     console.log(dirError);
     // Get the JSON webhook payload for the event that triggered the workflow
-    const payload = JSON.stringify(github.context.payload, undefined, 2);
+    const payload = JSON.stringify(_actions_github__WEBPACK_IMPORTED_MODULE_1__.context.payload, undefined, 2);
     console.log(`The event payload: ${payload}`);
 } catch(error) {
-    core.setFailed(error.message);
+    _actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed(error.message);
 }
 __webpack_async_result__();
 } catch(e) { __webpack_async_result__(e); } }, 1);

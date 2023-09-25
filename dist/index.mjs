@@ -11000,6 +11000,7 @@ try {
     const payload = JSON.stringify(_actions_github__WEBPACK_IMPORTED_MODULE_1__.context.payload, undefined, 2);
     console.log(`The event payload: ${payload}`);
 } catch(error) {
+    console.log("Error caught: ");
     _actions_core__WEBPACK_IMPORTED_MODULE_0__.setFailed(error.message);
 }
 __webpack_async_result__();

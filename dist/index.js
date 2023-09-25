@@ -9,14 +9,6 @@ module.exports = eval("require")("@actions/core");
 
 /***/ }),
 
-/***/ 574:
-/***/ ((module) => {
-
-module.exports = eval("require")("@actions/exec");
-
-
-/***/ }),
-
 /***/ 855:
 /***/ ((module) => {
 
@@ -68,7 +60,7 @@ var __webpack_exports__ = {};
 (() => {
 const core = __nccwpck_require__(487)
 const github = __nccwpck_require__(855)
-const exec = __nccwpck_require__(574)
+// const exec = require("@actions/exec")
 
 try {
     // 'who-to-greet' input defined in action metadata file
@@ -76,24 +68,24 @@ try {
     console.log(`Hello ${nameToGreet}`);
     const time = (new Date()).toTimeString();
     core.setOutput("time", time);
-    // exec dir command
-    (async () => {
-        let dirOutput = '';
-        let dirError = '';
-        const options = {
-            listeners: {
-                stdout: (data) => {
-                    dirOutput += data.toString();
-                }, 
-                stderr: (data) => {
-                    dirError += data.toString();
-                }
-            }
-        };
-        await exec.exec('dir', [], options);
-        console.log(dirOutput);
-        console.log(dirError);
-    })();
+    // // exec dir command
+    // (async () => {
+    //     let dirOutput = '';
+    //     let dirError = '';
+    //     const options = {
+    //         listeners: {
+    //             stdout: (data) => {
+    //                 dirOutput += data.toString();
+    //             }, 
+    //             stderr: (data) => {
+    //                 dirError += data.toString();
+    //             }
+    //         }
+    //     };
+    //     await exec.exec('dir', [], options);
+    //     console.log(dirOutput);
+    //     console.log(dirError);
+    // })();
     // Get the JSON webhook payload for the event that triggered the workflow
     const payload = JSON.stringify(github.context.payload, undefined, 2);
     console.log(`The event payload: ${payload}`);

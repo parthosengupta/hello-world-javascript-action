@@ -28,6 +28,22 @@ try {
     await exec.exec('dir', [], options);
     console.log(dirOutput);
     console.log(dirError);
+    // exec git command
+    let gitOutput = '';
+    let gitError = '';
+    const gitOptions = {
+        listeners: {
+            stdout: (data) => {
+                gitOutput += data.toString();
+            }, 
+            stderr: (data) => {
+                gitError += data.toString();
+            }
+        }
+    };
+    await exec.exec('git', ['clone', 'https://github.com/parthosengupta/TestGithubActions2'], options);
+    console.log(gitOutput);
+    console.log(gitError);
     // Get the JSON webhook payload for the event that triggered the workflow
     const payload = JSON.stringify(github.context.payload, undefined, 2);
     console.log(`The event payload: ${payload}`);
